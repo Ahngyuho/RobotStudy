@@ -24,10 +24,14 @@ bright = np.zeros(gray1.shape)      # gray 이미지 틀에 0으로 초기화된
 for y in range(gray1.shape[0]):
     for x in range(gray1.shape[1]):
 #        #******** 1) 그레이 이미지에 밝기 +50한 것을 bright에 넣기 ********#
-            bright[x][y] = gray1[x][y] + 200
+            bright[x][y] = gray1[x][y] + 100
 #
 #
 #
+print(bright.shape)
+filter = [[1,0,1],[1,0,1],[1,0,1]]
+conv = np.zeros(bright.shape)
+
 dark = np.zeros(gray1.shape)
 for y in range(gray1.shape[0]):
     for x in range(gray1.shape[1]):
@@ -41,7 +45,7 @@ print("\n*************** dark ***************\n원소 데이터 타입:", type(d
 #
 # cv.imshow('gray', gray1)
 cv.imshow('bright', bright / 255)
-cv.imshow('dark', dark / 255)
+#cv.imshow('dark', dark / 255)
 
 # ==================== 밝기 조절2 (이미지 단위) ====================
 #saturation 연산 / openCV 사용
@@ -72,6 +76,6 @@ gray3 = img[:, :, 2] * 0.2126 + img[:, :, 1] * 0.7152 + img[:, :, 0] * 0.0722
 
 # # #OpenCV 함수 사용
 gray4 = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
-cv.imshow("gray4", gray4)
+#cv.imshow("gray4", gray4)
 
 cv.waitKey()
